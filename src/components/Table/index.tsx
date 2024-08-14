@@ -1,4 +1,5 @@
-import { IRecord } from "../../types/schema.types"
+import { IRecord } from "../../types/schema"
+import * as S from './styles'
 
 interface ITableProps {
   records: IRecord[]
@@ -6,25 +7,25 @@ interface ITableProps {
 
 export const Table = ({ records }: ITableProps) => {
   return (
-    <table>
-    <thead>
+    <S.Table>
+    <S.TableHead>
       <tr>
-        <th>#</th>
-        <th>Sensor</th>
-        <th>Timestamp</th>
-        <th>Valor</th>
+        <S.TableHeader>#</S.TableHeader>
+        <S.TableHeader>Sensor</S.TableHeader>
+        <S.TableHeader>Timestamp</S.TableHeader>
+        <S.TableHeader>Valor</S.TableHeader>
       </tr>
-    </thead>
-    <tbody>
+    </S.TableHead>
+    <S.TableBody>
       {records.map(({ id, equipment_id, value, timestamp }: IRecord) => (
-        <tr key={id}>
-          <td>{id}</td>
-          <td>{equipment_id}</td>
-          <td>{timestamp}</td>
-          <td>{value}</td>
-        </tr>
+        <S.TableRow key={id}>
+          <S.TableCell>{id}</S.TableCell>
+          <S.TableCell>{equipment_id}</S.TableCell>
+          <S.TableCell>{timestamp}</S.TableCell>
+          <S.TableCell>{value}</S.TableCell>
+        </S.TableRow>
       ))}
-    </tbody>
-  </table>
+    </S.TableBody>
+  </S.Table>
   )
 }

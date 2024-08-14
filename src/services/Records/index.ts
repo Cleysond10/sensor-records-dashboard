@@ -1,10 +1,11 @@
-import { IRecord } from "../../types/schema.types";
+import { IRecord } from "../../types/schema";
+
+const ApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 const RecordsService = {
   getRecords: async (): Promise<IRecord[]> => {
-    const response = await fetch('http://localhost:8000/')
+    const response = await fetch(ApiUrl)
     const data = await response.json()
-    console.log(data)
     return data
   },
 }
